@@ -1,0 +1,12 @@
+admin:
+  hash: $2a$12$f15jmBCVgVVRVkrOIsL2BeR/YmzwhsoEkVp8V69cch1NKH3jS.8vG
+
+logstash:
+  hash: $2a$12$OzV0wMjSAqaJZfq2NWE9Yu2NPk6KjqXMHxXEeEFDecTdapErCMSUG
+
+kibanaserver:
+  hash: $2a$12$bnKFjwRmMiyIEGbUnqs1MOxuLObI.k/z5sodp2WgfTJe8ZjG8tyaG
+
+kibanaro:
+  hash: $2a$12$QGrLMUlSk.O4DxnaR8b9JezehYH460m1QWE2UCR/6trzYQyFxDPAS
+

@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+
+  elasticsearch:
+    build: elasticsearch/
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+
+  kibana:
+    build: kibana/
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    
+  fluentd:
+    build: ./fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/log/fluentd
+    networks:
+      - elk
+    ports:
+      - "8888:8888"
+      - "8888:8888/udp"
+      - "24224:24224"
+
+networks:
+  elk:
+    driver: bridge
